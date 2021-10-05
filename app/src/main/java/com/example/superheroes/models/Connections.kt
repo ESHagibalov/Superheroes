@@ -7,5 +7,5 @@ data class Connections(
     val groupAffiliation: String,
 
     @SerializedName("relatives")
-    val relatives: String
+    var relatives: String
 )

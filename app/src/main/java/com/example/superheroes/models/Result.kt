@@ -7,7 +7,7 @@ data class Result (
     var id: String,
 
     @SerializedName("name")
-    val name: String,
+    var name: String,
 
     @SerializedName("powerstats")
     val powerStats: Powerstats,

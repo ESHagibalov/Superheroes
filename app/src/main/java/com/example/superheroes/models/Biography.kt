@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class Biography(
     @SerializedName("full-name")
-    val fullName: String,
+    var fullName: String,
 
     @SerializedName("alter-egos")
     val alterEgos: String,
 
     @SerializedName("aliases")
-    val aliases: List<String>,
+    var aliases: List<String>,
 
     @SerializedName("place-of-birth")
     val placeOfBirth: String,

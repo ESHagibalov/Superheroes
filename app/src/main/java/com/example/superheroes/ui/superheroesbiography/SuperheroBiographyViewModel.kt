@@ -1,5 +1,6 @@
 package com.example.superheroes.ui.superheroesbiography
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.superheroes.internet.ApiService
@@ -11,32 +12,23 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-class SuperheroBiographyViewModel(): ViewModel() {
-    val superhero = MutableLiveData<Result>()
-    var id: Int = 0
-    fun getSuperhero() {
+class SuperheroBiographyViewModel: ViewModel() {
+    var superhero = MutableLiveData<Result>()
+    var id: Int = 1
+    fun getSuperhero(id: Int) {
         CoroutineHelper.coroutineScope.launch {
             SuperheroRepository.getById(id.toString()).collect {
                 if (it.response == "success") {
-                    parseRes(it)
+                    Log.e("view model superhero", it.image.url)
+
+                    superhero.value!!.image.url = it.image.url
+                    superhero.value!!.name = it.name.first().toString()
+                    superhero.value!!.work.occupation = it.work.occupation.first().toString()
+                    superhero.value!!.biography.fullName = it.biography.fullName.first().toString()
+                    superhero.value!!.biography.aliases = listOf(it.biography.aliases.first().toString())
+                    superhero.value!!.connections.relatives = it.connections.relatives.first().toString()
+
                 }
-            }
-        }
-    }
-
-    private fun parseRes(idResponse: IdResponse) {
-        val aliasesTmp = arrayListOf<String>()
-        var json: JSONObject
-        if (idResponse.response == "success") {
-            val aliasesPojo = (idResponse.biography.aliases as Map<*, *>)["aliases"] as List<*>
-            for (item in aliasesPojo) {
-                json = JSONObject(item as Map<*, *>)
-
-                aliasesTmp.add(ApiService.gson.fromJson(json.toString(), String::class.java))
-            }
-
-            for (item in aliasesTmp) {
-                //superhero.value!!.biography.aliases.add(item)
             }
         }
     }
