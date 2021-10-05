@@ -10,7 +10,7 @@ data class Biography(
     val alterEgos: String,
 
     @SerializedName("aliases")
-    val aliases: List<String>,
+    val aliases: MutableList<String>,
 
     @SerializedName("place-of-birth")
     val placeOfBirth: String,

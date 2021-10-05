@@ -9,18 +9,19 @@ import androidx.navigation.ui.NavigationUI
 import com.example.superheroes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val binding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main) as ActivityMainBinding
-        binding.lifecycleOwner = this
+        binding = ActivityMainBinding.inflate(layoutInflater)
        // setupNavigation(binding)
+        setContentView(binding.root)
+
     }
 
     private fun setupNavigation(binding: ActivityMainBinding) {
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragment_view) as NavHostFragment?
+            .findFragmentById(R.id.fragment_home) as NavHostFragment?
 
     }
 

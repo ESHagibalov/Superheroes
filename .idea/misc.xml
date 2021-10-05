@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_superhero_biography.xml" value="0.22407407407407406" />
         <entry key="app/src/main/res/drawable/background_superhero_card.xml" value="0.23425925925925925" />
         <entry key="app/src/main/res/drawable/background_superhero_image.xml" value="0.23425925925925925" />
+        <entry key="app/src/main/res/drawable/background_superhero_search.xml" value="0.16927083333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout-v23/item_superhero.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/fragment_superhero_biography.xml" value="0.21875" />
-        <entry key="app/src/main/res/layout/fragment_superheroes.xml" value="0.22644927536231885" />
+        <entry key="app/src/main/res/layout/fragment_superheroes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_superhero.xml" value="0.22644927536231885" />
+        <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.16770833333333332" />
       </map>
     </option>
   </component>

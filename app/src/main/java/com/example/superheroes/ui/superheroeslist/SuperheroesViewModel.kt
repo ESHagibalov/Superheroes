@@ -26,10 +26,12 @@ class SuperheroesViewModel : ViewModel() {
 
     private fun parseRes(result: NameResponse) {
         val superheroesTmp = arrayListOf<IdResult>()
+        var json: JSONObject
         if (result.response == "success") {
             val resPojo = (result.idResults as Map<*, *>)["results"] as List<*>
             for (item in resPojo) {
-                val json = JSONObject(item as Map<*, *>)
+                json = JSONObject(item as Map<*, *>)
+
                 superheroesTmp.add(ApiService.gson.fromJson(json.toString(), IdResult::class.java))
             }
 
