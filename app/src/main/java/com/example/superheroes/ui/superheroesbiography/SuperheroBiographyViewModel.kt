@@ -3,8 +3,7 @@ package com.example.superheroes.ui.superheroesbiography
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.superheroes.internet.ApiService
-import com.example.superheroes.models.Biography
-import com.example.superheroes.models.IdResult
+import com.example.superheroes.models.Result
 import com.example.superheroes.models.responses.IdResponse
 import com.example.superheroes.superhero.SuperheroRepository
 import com.example.superheroes.utils.CoroutineHelper
@@ -13,7 +12,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class SuperheroBiographyViewModel(): ViewModel() {
-    val superhero = MutableLiveData<IdResult>()
+    val superhero = MutableLiveData<Result>()
     var id: Int = 0
     fun getSuperhero() {
         CoroutineHelper.coroutineScope.launch {
@@ -37,7 +36,7 @@ class SuperheroBiographyViewModel(): ViewModel() {
             }
 
             for (item in aliasesTmp) {
-                superhero.value!!.biography.aliases.add(item)
+                //superhero.value!!.biography.aliases.add(item)
             }
         }
     }

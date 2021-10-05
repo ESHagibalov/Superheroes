@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.superheroes.internet.ApiService
-import com.example.superheroes.models.IdResult
+import com.example.superheroes.models.Result
 import com.example.superheroes.models.responses.NameResponse
 import com.example.superheroes.superhero.SuperheroRepository
 import com.example.superheroes.utils.CoroutineHelper
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class SuperheroesViewModel : ViewModel() {
-    val superheroes = MutableLiveData(arrayListOf<IdResult>())
+    val superheroes = MutableLiveData(arrayListOf<Result>())
 
     fun getSuperheroes(name: String) {
         CoroutineHelper.coroutineScope.launch {
@@ -26,18 +26,18 @@ class SuperheroesViewModel : ViewModel() {
     }
 
     private fun parseRes(result: NameResponse) {
-        val superheroesTmp = arrayListOf<IdResult>()
+        val superheroesTmp = arrayListOf<Result>()
         var json: JSONObject
         if (result.response == "success") {
 
-            val resPojo = (result.idResults as List<*>)
+            val resPojo = (result.results as List<*>)
 
             for (item in resPojo) {
 
                 json = JSONObject(item as Map<*, *>)
                 Log.e("Im here", "eeeeee")
 
-                superheroesTmp.add(ApiService.gson.fromJson(json.toString(), IdResult::class.java))
+                superheroesTmp.add(ApiService.gson.fromJson(json.toString(), Result::class.java))
             }
 
             for (item in superheroesTmp) {

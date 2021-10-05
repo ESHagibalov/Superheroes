@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.superheroes.databinding.ItemSuperheroBinding
-import com.example.superheroes.models.IdResult
+import com.example.superheroes.models.Result
 
 class SuperheroesPreviewAdapter(
     private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<SuperheroesPreviewAdapter.ViewHolder>() {
 
-    var data = listOf<IdResult>()
+    var data = listOf<Result>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -21,7 +21,7 @@ class SuperheroesPreviewAdapter(
         val binding: ItemSuperheroBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: IdResult,
+            item: Result,
             onClickListener: OnClickListener
         ) {
             binding.tvCardName.text = item.name
@@ -43,8 +43,8 @@ class SuperheroesPreviewAdapter(
         }
     }
 
-    class OnClickListener(val clickListener: (item: IdResult) -> Unit) {
-        fun onClick(item: IdResult) = clickListener(item)
+    class OnClickListener(val clickListener: (item: Result) -> Unit) {
+        fun onClick(item: Result) = clickListener(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

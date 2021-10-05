@@ -2,7 +2,7 @@ package com.example.superheroes.models
 
 import com.google.gson.annotations.SerializedName
 
-data class IdResult (
+data class Result (
     @SerializedName("id")
     val id: String,
 

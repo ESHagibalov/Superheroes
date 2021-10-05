@@ -1,6 +1,6 @@
 package com.example.superheroes.models.responses
 
-import com.example.superheroes.models.IdResult
+import com.example.superheroes.models.Result
 import com.google.gson.annotations.SerializedName
 
 data class NameResponse(
@@ -11,5 +11,5 @@ data class NameResponse(
     val resultsFor: String,
 
     @SerializedName("results")
-    val idResults: MutableList<IdResult>,
+    val results: MutableList<Result>,
 )
