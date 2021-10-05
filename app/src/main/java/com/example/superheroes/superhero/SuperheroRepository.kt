@@ -12,8 +12,9 @@ object SuperheroRepository{
     suspend fun getById(id: String):Flow<IdResponse> = flow{
         try {
             val result = ApiService.userApi.getById(id)
-
+            Log.e("Result", ApiService.userApi.getById(id).toString())
             emit(result)
+
         } catch (e: Exception) {
             Log.e("GetById exception", e.message.toString())
         }

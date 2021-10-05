@@ -2,10 +2,12 @@ package com.example.superheroes.ui.superheroeslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.superheroes.databinding.ItemSuperheroBinding
 import com.example.superheroes.models.Result
+
 
 class SuperheroesPreviewAdapter(
     private val onClickListener: OnClickListener
@@ -18,14 +20,18 @@ class SuperheroesPreviewAdapter(
         }
 
     class ViewHolder private constructor(
-        val binding: ItemSuperheroBinding
+        private val binding: ItemSuperheroBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        var id = 0
+        lateinit var clMain: ConstraintLayout
         fun bind(
             item: Result,
             onClickListener: OnClickListener
         ) {
+            clMain = binding.clMainLayout
+            id = item.id.toInt()
             binding.tvCardName.text = item.name
-            binding.tvCardId.text = item.id
+            binding.tvCardPublisher.text = "by ${item.biography.publisher}"
             binding.ivCardImage.load(item.image.url)
             binding.clMainLayout.setOnClickListener {
                 onClickListener.onClick(item)
@@ -43,10 +49,6 @@ class SuperheroesPreviewAdapter(
         }
     }
 
-    fun refreshSuperheroes(result: List<Result>) {
-        this.data = result
-        notifyDataSetChanged()
-    }
 
     class OnClickListener(val clickListener: (item: Result) -> Unit) {
         fun onClick(item: Result) = clickListener(item)
@@ -61,7 +63,9 @@ class SuperheroesPreviewAdapter(
             val item = data[position]
 
             holder.bind(item, onClickListener)
-        }    }
+        }
+
+    }
 
     override fun getItemCount() = data.size
 }

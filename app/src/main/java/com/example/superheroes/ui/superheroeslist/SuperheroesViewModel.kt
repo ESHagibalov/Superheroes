@@ -23,39 +23,14 @@ class SuperheroesViewModel : ViewModel() {
             SuperheroRepository.getByName("search/${name}").collect {
                 if (it.response == "success") {
                     parseRes(it)
+                } else {
+                    superheroes.postValue(null)
                 }
             }
         }
     }
 
     private fun parseRes(result: NameResponse) {
-        val superheroesTmp = arrayListOf<Result>()
-        var json: JSONObject
-        Log.e("view model", "parsing")
-
-        if (result.response == "success") {
-
-            val resPojo = (result.results as List<*>)
-
-            for (item in resPojo) {
-//                Log.e("Im here", "eeeeee")
-//                Log.e("nameResponse", result.results.toString())
-
-                json = JSONObject(item as Map<*, *>)
-                superheroesTmp.add(ApiService.gson.fromJson(json.toString(), Result::class.java))
-            }
-
-            try {
-                Class.forName("dalvik.system.CloseGuard")
-                    .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
-                    .invoke(null, true)
-            } catch (e: ReflectiveOperationException) {
-                throw RuntimeException(e)
-            }
-            for (item in superheroesTmp) {
-                superheroes.value!!.add(item)
-
-            }
-        }
+        superheroes.postValue(result.results as ArrayList<Result>?)
     }
 }

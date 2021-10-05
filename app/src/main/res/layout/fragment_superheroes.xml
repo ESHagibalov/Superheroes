@@ -10,14 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F0EFEE"
+        android:background="#FBFBFB"
         tools:context=".ui.superheroeslist.SuperheroesFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/ab_superheroes_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F0EFEE"
+            android:background="#FBFBFB"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
                     android:id="@+id/mtb_superheroes_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="#F0EFEE"
+                    android:background="#FBFBFB"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="8dp"
-                    android:src="@drawable/ic_baseline_account_circle_24"
+                    android:src="@drawable/ic_profile_my"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
                     android:id="@+id/tv_greeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hello"
+                    android:text="@string/greeting"
                     app:layout_constraintStart_toEndOf="@id/iv_profile_photo"
                     app:layout_constraintTop_toTopOf="@id/iv_profile_photo" />
 
@@ -59,7 +59,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Andrew Ivanov"
+                    android:text="@string/ernest_shagibalov"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/tv_greeting"
@@ -68,28 +68,56 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-        <EditText
-            android:id="@+id/et_search_by_name"
-            style="@style/InputStyle"
+        <LinearLayout
+            android:id="@+id/ll_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/background_superhero_search"
-            android:hint="Enter superhero name"
-            android:inputType="text"
-            android:textColor="@color/black"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ab_superheroes_list" />
+            app:layout_constraintTop_toBottomOf="@id/ab_superheroes_list">
 
+            <EditText
+                android:id="@+id/et_search_by_name"
+                style="@style/InputStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_superhero_search"
+                android:hint="@string/et_hint_enter_superhero_name"
+                android:inputType="text"
+                android:text=""
+                android:imeOptions="actionDone"
+                android:layout_weight="1"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_search_24"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_lets_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_s_start_searching"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_search"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_superheroes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_search_by_name"
+            app:layout_constraintTop_toBottomOf="@id/ll_search"
             tools:itemCount="12"
             tools:listitem="@layout/item_superhero" />
 

@@ -1,5 +1,7 @@
 package com.example.superheroes.models.responses
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.example.superheroes.models.*
 import com.google.gson.annotations.SerializedName
 
