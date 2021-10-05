@@ -1,5 +1,6 @@
 package com.example.superheroes.ui.superheroeslist
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.superheroes.internet.ApiService
@@ -28,9 +29,13 @@ class SuperheroesViewModel : ViewModel() {
         val superheroesTmp = arrayListOf<IdResult>()
         var json: JSONObject
         if (result.response == "success") {
-            val resPojo = (result.idResults as Map<*, *>)["results"] as List<*>
+
+            val resPojo = (result.idResults as List<*>)
+
             for (item in resPojo) {
+
                 json = JSONObject(item as Map<*, *>)
+                Log.e("Im here", "eeeeee")
 
                 superheroesTmp.add(ApiService.gson.fromJson(json.toString(), IdResult::class.java))
             }

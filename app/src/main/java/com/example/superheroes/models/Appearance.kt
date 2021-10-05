@@ -10,10 +10,10 @@ data class Appearance(
     val race: String,
 
     @SerializedName("height")
-    val height: List<String>,
+    val height: MutableList<String>,
 
     @SerializedName("weight")
-    val weight: List<String>,
+    val weight: MutableList<String>,
 
     @SerializedName("eye-color")
     val eyeColor: String,

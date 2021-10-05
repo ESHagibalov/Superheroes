@@ -11,5 +11,5 @@ data class NameResponse(
     val resultsFor: String,
 
     @SerializedName("results")
-    val idResults: List<IdResult>,
+    val idResults: MutableList<IdResult>,
 )
