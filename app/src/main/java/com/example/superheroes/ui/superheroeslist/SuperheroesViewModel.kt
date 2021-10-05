@@ -1,6 +1,5 @@
 package com.example.superheroes.ui.superheroeslist
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.superheroes.internet.ApiService
@@ -33,15 +32,24 @@ class SuperheroesViewModel : ViewModel() {
             val resPojo = (result.results as List<*>)
 
             for (item in resPojo) {
-
+//                Log.e("Im here", "eeeeee")
+//                Log.e("nameResponse", result.results.toString())
+//
                 json = JSONObject(item as Map<*, *>)
-                Log.e("Im here", "eeeeee")
-
+//
                 superheroesTmp.add(ApiService.gson.fromJson(json.toString(), Result::class.java))
             }
 
+            try {
+                Class.forName("dalvik.system.CloseGuard")
+                    .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
+                    .invoke(null, true)
+            } catch (e: ReflectiveOperationException) {
+                throw RuntimeException(e)
+            }
             for (item in superheroesTmp) {
                 superheroes.value!!.add(item)
+
             }
         }
     }

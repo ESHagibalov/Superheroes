@@ -2,6 +2,7 @@ package com.example.superheroes.ui.superheroeslist
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,8 @@ class SuperheroesFragment : Fragment() {
     private lateinit var binding: FragmentSuperheroesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.getSuperheroes("Batman")
+
     }
 
     override fun onCreateView(
@@ -41,8 +44,10 @@ class SuperheroesFragment : Fragment() {
                // findNavController().navigate()
             }
         )
-        viewModel.getSuperheroes("Batman")
+
         setObservers(binding)
+//        Log.e("now element is", viewModel.superheroes.value!!.first().toString())
+
         return binding.root
     }
 
@@ -50,6 +55,7 @@ class SuperheroesFragment : Fragment() {
         viewModel.superheroes.observe(viewLifecycleOwner, {
             if(!it.isNullOrEmpty()) {
                 (binding.rvSuperheroes.adapter as SuperheroesPreviewAdapter).data = viewModel.superheroes.value!!
+               // Log.e("now element is", viewModel.superheroes.value!!.first().toString())
             }
         })
     }

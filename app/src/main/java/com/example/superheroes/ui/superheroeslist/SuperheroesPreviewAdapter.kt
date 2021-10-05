@@ -43,6 +43,11 @@ class SuperheroesPreviewAdapter(
         }
     }
 
+    fun refreshSuperheroes(result: List<Result>) {
+        this.data = result
+        notifyDataSetChanged()
+    }
+
     class OnClickListener(val clickListener: (item: Result) -> Unit) {
         fun onClick(item: Result) = clickListener(item)
     }
