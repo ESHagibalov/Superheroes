@@ -25,7 +25,7 @@ object SuperheroRepository{
 
             emit(result)
         } catch (e: Exception) {
-            Log.e("GetById exception", e.message.toString())
+            Log.e("GetByName exception", e.message.toString())
         }
     }
 
