@@ -4,6 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="et_hint_enter_superhero_name">Enter superhero name</string>
     <string name="greeting">Hello</string>
-    <string name="ernest_shagibalov">Ernest Shagibalov</string>
+    <string name="account_name">User</string>
     <string name="let_s_start_searching">Let\'s start searching!!!</string>
 </resources>

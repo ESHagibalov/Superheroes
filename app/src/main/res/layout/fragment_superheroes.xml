@@ -54,16 +54,6 @@
                     android:text="@string/greeting"
                     app:layout_constraintStart_toEndOf="@id/iv_profile_photo"
                     app:layout_constraintTop_toTopOf="@id/iv_profile_photo" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ernest_shagibalov"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/tv_greeting"
-                    app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -82,21 +72,21 @@
                 style="@style/InputStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/background_superhero_search"
                 android:hint="@string/et_hint_enter_superhero_name"
+                android:imeOptions="actionDone"
                 android:inputType="text"
                 android:text=""
-                android:imeOptions="actionDone"
-                android:layout_weight="1"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_search"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_search_24"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_search_24" />
         </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -104,12 +94,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/let_s_start_searching"
-            android:textStyle="bold"
             android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_search"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_search" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_superheroes"
             android:layout_width="match_parent"

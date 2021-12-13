@@ -23,6 +23,7 @@ class SuperheroesViewModel : ViewModel() {
             SuperheroRepository.getByName("search/${name}").collect {
                 if (it.response == "success") {
                     parseRes(it)
+                    Log.d("Here_tag", "Getting superheroes list $it")
                 } else {
                     superheroes.postValue(null)
                 }
